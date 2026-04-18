@@ -18,7 +18,7 @@ const Signup = () => {
     }
     try {
       const request = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        "http://localhost:8000/api/auth/signup",
         signupData
       );
       localStorage.setItem("token", request.data.token);
@@ -29,48 +29,60 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSignup}>
-        <div>
-          <label>Name : </label>
+    <div className="flex flex-col w-full min-h-screen items-center justify-center">
+      <form
+        onSubmit={handleSignup}
+        className="border border-gray-100 shadow-2xl rounded-2xl p-7 md:p-10 md:w-1/4"
+      >
+        <h1 className="text-2xl font-semibold">Create Account</h1>
+        <p className="text-gray-500">Fill your details to create new account</p>
+        <div className="flex flex-col my-7 w-full">
           <input
+            className="border border-gray-500 px-3 py-2 rounded-lg w-full"
             type="text"
             name="name"
             value={signupData.name}
             onChange={(e) =>
-              setLoginData({ ...signupData, name: e.target.value })
+              setSignupData({ ...signupData, name: e.target.value })
             }
-            placeholder="Enter your Name..."
+            placeholder="Name"
           />
         </div>
-        <div>
-          <label>Email : </label>
+        <div className="flex flex-col my-7 w-full">
           <input
+            className="border border-gray-500 px-3 py-2 rounded-lg w-full"
             type="email"
             name="email"
             value={signupData.email}
             onChange={(e) =>
-              setLoginData({ ...signupData, email: e.target.value })
+              setSignupData({ ...signupData, email: e.target.value })
             }
-            placeholder="Enter your email..."
+            placeholder="Email"
           />
         </div>
-        <div>
-          <label>Password : </label>
+        <div className="flex flex-col w-full">
           <input
+            className="border border-gray-500 px-3 py-2 rounded-lg w-full"
             type="password"
             name="password"
             value={signupData.password}
             onChange={(e) =>
-              setLoginData({ ...signupData, password: e.target.value })
+              setSignupData({ ...signupData, password: e.target.value })
             }
-            placeholder="Enter your Password..."
+            placeholder="Password"
           />
         </div>
-        <button type="submit">Signup</button>
-        <p>{error ? error : ""}</p>
+        <p className="text-red-500 my-1">{error ? error : ""}</p>
+        <button
+          type="submit"
+          className="w-full font-semibold bg-blue-600 text-white my-3 rounded py-1 cursor-pointer hover:bg-blue-800"
+        >
+          Signup
+        </button>
+        <p className="text-center">
+          Already have an account? <Link to="/login" className="text-blue-700 underline underline-offset-4">Login</Link>
+        </p>
       </form>
-      <p>Already have an account ? <Link to='/login'>Login</Link></p>
     </div>
   );
 };

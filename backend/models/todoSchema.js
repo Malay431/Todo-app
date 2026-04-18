@@ -11,6 +11,10 @@ const todoSchema = mongoose.Schema({
     },
     description:{
         type:String,
+    },
+    isCompleted:{
+        type:Boolean,
+        default:false
     }
 })
 
