@@ -1,4 +1,4 @@
-A Full Todo Application developed using MERN Stack.
+A Full Todo Application (Basic operations) developed using MERN Stack.
 For Styling, Used Tailwind CSS [Ignore UI :)]
 
 Features : 
